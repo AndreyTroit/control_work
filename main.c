@@ -11,26 +11,21 @@ int showEl(const int* ar, int size, int N = 10, int M = 10){
 	return 0;
 }
 
-int getMaxEl(int* ar, int size){
-	int res = ar[0];
-	int ind = 0;
-	for(int i = 0; i < size; i++){
-		if(ar[i] > res){
-			res = ar[i];
-			ind = i;
-		}
-	}
-	return res;
+void Swap(int& a, int& b){
+    int s = a;
+    a = b;
+    b = s;
 }
 
-void selectionSort(int* ar, int size){
-	for(int i = 0; i < size; i++) {
-		std::cout << getMaxEl(ar, size - i) << " ";
+void bubbleSort(int* ar, int size){
+    	for(int i = 0; i < size; i++){
+        	for(int j = 0; j < size - 1 - i; j++){
+            		if (ar[j] > ar[j+1]){
+                		Swap(ar[j], ar[j+1]);
+            		}
+        	}
     	}
-	std::cout << std::endl;
 }
-
-
 
 int main(){ 
 	int ar[1000] = {};
@@ -48,5 +43,9 @@ int main(){
 		arr[i] = rand() % 51 + 100;
 	}
 	showEl(arr, size);
+	std::cout << '\n' << std::endl;
+	bubbleSort(arr, size);
+	showEl(arr, size);
+	std::cout << '\n' << std::endl;
 	return 0;
 }
